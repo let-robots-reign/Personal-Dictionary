@@ -1,0 +1,15 @@
+html {
+  padding: 50px;
+}
+
+#word-form {
+  max-width: 500px;
+}
+
+#chosen-words-number {
+  visibility: hidden;
+}
+
+.show-word:hover, .edit-word:hover, .delete-word:hover {
+  text-decoration: none;
+}
