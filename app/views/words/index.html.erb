@@ -1,34 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<div class="row d-flex justify-content-center">
-  <p class="h1">Words</p>
+  <div class="row d-flex justify-content-center">
+    <div class="col text-center">
+      <p class="h1">Words</p>
+      <p class="text-md-left" id="chosen-words-number">
+        Выбрано слов: <%= @words.count %>
+        <a class="btn btn-light">Удалить все <i class="far fa-trash-alt icon-2x ml-1"></i></a>
+      </p>
+      <table class="table table-hover text-center">
+        <thead>
+        <tr>
+          <th>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="global-checkbox">
+              <label class="custom-control-label" for="global-checkbox"></label>
+            </div>
+          </th>
+          <th>№</th>
+          <th>Word</th>
+          <th>Translation</th>
+          <th>Synonyms</th>
+          <th></th>
+        </tr>
+        </thead>
 
-  <table class="table table-hover text-center m-5">
-    <thead>
-    <tr>
-      <th>№</th>
-      <th>Word</th>
-      <th>Translation</th>
-      <th>Synonyms</th>
-      <th></th>
-    </tr>
-    </thead>
+        <tbody>
+        <% @words.each_with_index do |word, index| %>
+          <tr>
+            <td>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-<%= word.id %>">
+                <label class="custom-control-label" for="checkbox-<%= word.id %>"></label>
+              </div>
+            </td>
+            <td><%= index + 1 %></td>
+            <td><%= word.word %></td>
+            <td><%= word.translation %></td>
+            <td><%= word.synonyms %></td>
+            <td>
+              <%= link_to word, class: 'show-word' do %>
+                <i class="fas fa-eye icon-2x mr-1"></i>
+              <% end %>
+              <span> | </span>
+              <%= link_to edit_word_path(word), class: 'edit-word' do %>
+                <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
+              <% end %>
+              <span> | </span>
+              <%= link_to word, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-word' do %>
+                <i class="far fa-trash-alt icon-2x ml-1"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
 
-    <tbody>
-    <% @words.each_with_index do |word, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= word.word %></td>
-        <td><%= word.translation %></td>
-        <td><%= word.synonyms %></td>
-        <td><%= link_to 'Show |', word %>
-          <%= link_to 'Edit |', edit_word_path(word) %>
-          <%= link_to 'Destroy ', word, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-  <%= link_to 'New Word', new_word_path %>
+      <%= link_to 'New Word', new_word_path %>
+    </div>
+  </div>
 </div>
+
+
+<%= javascript_pack_tag 'index' %>

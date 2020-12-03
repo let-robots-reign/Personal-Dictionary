@@ -6,6 +6,10 @@ html {
   max-width: 500px;
 }
 
-#submit-button, #back-button {
-  display: inline;
+#chosen-words-number {
+  visibility: hidden;
+}
+
+.show-word:hover, .edit-word:hover, .delete-word:hover {
+  text-decoration: none;
 }
