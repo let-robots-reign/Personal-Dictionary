@@ -24,7 +24,8 @@ class WordsController < ApplicationController
   # POST /words
   # POST /words.json
   def create
-    @word = Word.new(word_params)
+    params = fill_optional_fields(word_params)
+    @word = Word.new(params)
 
     respond_to do |format|
       if @word.save
@@ -62,11 +63,18 @@ class WordsController < ApplicationController
   end
 
   private
+
   def set_word
     @word = Word.find(params[:id])
   end
 
   def word_params
     params.require(:word).permit(:word, :translation, :synonyms, :example)
+  end
+
+  def fill_optional_fields(params)
+    params[:synonyms] = '-' if params[:synonyms].eql?('')
+    params[:example] = '-' if params[:example].eql?('')
+    params
   end
 end
