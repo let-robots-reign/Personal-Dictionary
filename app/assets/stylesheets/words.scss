@@ -1,3 +1,11 @@
 html {
   padding: 50px;
 }
+
+#word-form {
+  max-width: 500px;
+}
+
+#submit-button, #back-button {
+  display: inline;
+}

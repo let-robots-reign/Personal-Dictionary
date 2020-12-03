@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9867461-659a-4393-8b82-151b92171382" name="Default Changelist" comment="generated models">
+    <list default="true" id="d9867461-659a-4393-8b82-151b92171382" name="Default Changelist" comment="index page, add bootstrap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/words.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/words.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/words_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/words_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/words/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/words/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpack/environment.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack/environment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/words/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/words/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/words/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/words/new.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +190,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606980834012</updated>
       <workItem from="1606980848375" duration="1911000" />
-      <workItem from="1606983575192" duration="4124000" />
+      <workItem from="1606983575192" duration="5818000" />
     </task>
     <task id="LOCAL-00001" summary="generated models">
       <created>1606982481603</created>
@@ -213,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606983626884</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="index page, add bootstrap">
+      <created>1606992175274</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606992175274</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +233,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="generated models" />
-    <option name="LAST_COMMIT_MESSAGE" value="generated models" />
+    <MESSAGE value="index page, add bootstrap" />
+    <option name="LAST_COMMIT_MESSAGE" value="index page, add bootstrap" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Personal_Dictionary@Development__Personal_Dictionary.rcov" NAME="Development: Personal-Dictionary Coverage Results" MODIFIED="1606985375941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Personal-Dictionary" />
