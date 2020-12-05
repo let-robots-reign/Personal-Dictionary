@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9867461-659a-4393-8b82-151b92171382" name="Default Changelist" comment="set default values for model">
-      <change afterPath="$PROJECT_DIR$/app/javascript/packs/index.js" afterDir="false" />
+    <list default="true" id="d9867461-659a-4393-8b82-151b92171382" name="Default Changelist" comment="ajax delete, checkboxes logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/words.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/words.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/words/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/words/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,10 +62,9 @@
   </component>
   <component name="RunManager" selected="Rails.Development: Personal-Dictionary">
     <configuration name="Development: Personal-Dictionary" type="RailsRunConfigurationType" factoryName="Rails">
-      <module name="Personal-Dictionary" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -84,7 +80,7 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="0.0.0.0" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
       <method v="2" />
@@ -189,6 +185,12 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Rails.Development: Personal-Dictionary" />
+      <item itemvalue="Rails.Production: Personal-Dictionary" />
+      <item itemvalue="Rake.spec: Personal-Dictionary" />
+      <item itemvalue="Rake.test: Personal-Dictionary" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
@@ -201,6 +203,8 @@
       <updated>1606980834012</updated>
       <workItem from="1606980848375" duration="1911000" />
       <workItem from="1606983575192" duration="14441000" />
+      <workItem from="1607009066936" duration="617000" />
+      <workItem from="1607180345097" duration="14335000" />
     </task>
     <task id="LOCAL-00001" summary="generated models">
       <created>1606982481603</created>
@@ -237,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607003096162</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ajax delete, checkboxes logic">
+      <created>1607189196784</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607189196784</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,9 +271,10 @@
     <MESSAGE value="index page, add bootstrap" />
     <MESSAGE value="bootstrap forms" />
     <MESSAGE value="set default values for model" />
-    <option name="LAST_COMMIT_MESSAGE" value="set default values for model" />
+    <MESSAGE value="ajax delete, checkboxes logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajax delete, checkboxes logic" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Personal_Dictionary@Development__Personal_Dictionary.rcov" NAME="Development: Personal-Dictionary Coverage Results" MODIFIED="1607003437860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Personal-Dictionary" />
+    <SUITE FILE_PATH="coverage/Personal_Dictionary@Development__Personal_Dictionary.rcov" NAME="Development: Personal-Dictionary Coverage Results" MODIFIED="1607200080768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Personal-Dictionary" />
   </component>
 </project>

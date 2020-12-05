@@ -29,7 +29,7 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       if @word.save
-        format.html { redirect_to @word, notice: 'Word was successfully created.' }
+        format.html { redirect_to action: 'index', notice: 'Word was successfully created.' }
         format.json { render :show, status: :created, location: @word }
       else
         format.html { render :new }
@@ -42,8 +42,9 @@ class WordsController < ApplicationController
   # PATCH/PUT /words/1.json
   def update
     respond_to do |format|
-      if @word.update(word_params)
-        format.html { redirect_to @word, notice: 'Word was successfully updated.' }
+      params = fill_optional_fields(word_params)
+      if @word.update(params)
+        format.html { redirect_to action: 'index', notice: 'Word was successfully updated.' }
         format.json { render :show, status: :ok, location: @word }
       else
         format.html { render :edit }
@@ -57,6 +58,7 @@ class WordsController < ApplicationController
   def destroy
     @word.destroy
     respond_to do |format|
+      format.js
       format.html { redirect_to words_url, notice: 'Word was successfully destroyed.' }
       format.json { head :no_content }
     end
