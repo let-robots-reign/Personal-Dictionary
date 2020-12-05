@@ -42,35 +42,16 @@ $(document).ready(function () {
         $(this).closest('tr').fadeOut();
     })
 
-    $('.words').click(function (e) {
+    $('.words').click(function () {
         const word = $(this).find('.word').text()
         const translation = $(this).find('.word-translation').text()
         const synonyms = $(this).find('.word-synonyms').text()
         let card_content = `<h3>${word}</h3>
-                                    <h5>${translation}</h5>`
+                            <h5><em>(${translation})</em></h5><br/>`
         if (synonyms !== '-') {
             card_content += `Синонимы слова: <em>${synonyms}</em>`
         }
 
         $('#word-model-body').html(card_content)
     })
-
-    // if (e.target.nodeName !== 'LABEL' && e.target.nodeName !== 'path'
-    //     && !e.target.classList.contains('word-checkbox')) {
-    //
-    //     const word = $(this).find('.word').text()
-    //     const translation = $(this).find('.word-translation').text()
-    //     const synonyms = $(this).find('.word-synonyms').text()
-    //     let card_content = `<h3>${word}</h3>
-    //                             <h5>${translation}</h5>`
-    //     if (synonyms !== '-') {
-    //         card_content += `Синонимы слова: <em>${synonyms}</em>`
-    //     }
-    //
-    //     $('#word-model-body').html(card_content)
-    //     jQuery.noConflict()
-    //     jQuery('#modal-long').modal('show')
-    // } else {
-    //     console.log("HERE")
-    // }
 })

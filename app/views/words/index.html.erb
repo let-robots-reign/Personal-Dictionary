@@ -34,7 +34,7 @@
 
         <tbody>
         <% @words.each_with_index do |word, index| %>
-          <tr class='words' data-toggle="modal" data-target="#modal-long">
+          <tr class='words'>
             <td>
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-<%= word.id %>">
@@ -46,10 +46,8 @@
             <td class="word-translation"><%= word.translation %></td>
             <td class="word-synonyms"><%= word.synonyms %></td>
             <td>
-              <%#= link_to word, class: 'show-word' do %>
-              <!--                <i class="fas fa-eye icon-2x mr-1"></i>-->
-              <%# end %>
-              <!--              <span> | </span>-->
+              <i class="fas fa-eye icon-2x mr-1 show-word" data-toggle="modal" data-target="#modal-long"></i>
+              <span> | </span>
               <%= link_to edit_word_path(word), class: 'edit-word' do %>
                 <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
               <% end %>

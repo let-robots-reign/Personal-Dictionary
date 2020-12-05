@@ -29,6 +29,11 @@ body {
   float: left;
 }
 
+.show-word {
+  cursor: pointer;
+  color: blue;
+}
+
 #chosen-words-number {
   display: inline-block;
   margin-bottom: 15px;
