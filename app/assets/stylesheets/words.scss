@@ -2,6 +2,16 @@ html {
   padding: 50px;
 }
 
+body {
+  background-color: #85DCBA;
+}
+
+.container {
+  background-color: white;
+  padding: 50px;
+  border-radius: 20px;
+}
+
 #word-form {
   max-width: 500px;
 }
@@ -12,4 +22,15 @@ html {
 
 .show-word:hover, .edit-word:hover, .delete-word:hover {
   text-decoration: none;
+}
+
+#add-word {
+  margin-bottom: 15px;
+  float: left;
+}
+
+#chosen-words-number {
+  display: inline-block;
+  margin-bottom: 15px;
+  float: right;
 }

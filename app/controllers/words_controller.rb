@@ -42,7 +42,8 @@ class WordsController < ApplicationController
   # PATCH/PUT /words/1.json
   def update
     respond_to do |format|
-      if @word.update(word_params)
+      params = fill_optional_fields(word_params)
+      if @word.update(params)
         format.html { redirect_to action: 'index', notice: 'Word was successfully updated.' }
         format.json { render :show, status: :ok, location: @word }
       else

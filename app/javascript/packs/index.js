@@ -18,13 +18,11 @@ $(document).ready(function () {
         }
     })
 
-    word_checkbox.change(function () {
+    word_checkbox.change(function (e) {
         if ($(this).is(':checked')) {
             checked_words += 1
-            console.log('Checkbox is checked..')
         } else {
             checked_words -= 1
-            console.log('Checkbox is not checked..')
         }
 
         if (checked_words) {
@@ -36,11 +34,43 @@ $(document).ready(function () {
     })
 
     // ajax destroy
-    $('.delete-word').bind('ajax:success', function() {
+    $('.delete-word').bind('ajax:success', function () {
         if ($(this).closest('tr').find('.word-checkbox').is(':checked')) {
             checked_words -= 1
             chosen_words_text.text(delete_all_caption + checked_words)
         }
         $(this).closest('tr').fadeOut();
     })
+
+    $('.words').click(function (e) {
+        const word = $(this).find('.word').text()
+        const translation = $(this).find('.word-translation').text()
+        const synonyms = $(this).find('.word-synonyms').text()
+        let card_content = `<h3>${word}</h3>
+                                    <h5>${translation}</h5>`
+        if (synonyms !== '-') {
+            card_content += `Синонимы слова: <em>${synonyms}</em>`
+        }
+
+        $('#word-model-body').html(card_content)
+    })
+
+    // if (e.target.nodeName !== 'LABEL' && e.target.nodeName !== 'path'
+    //     && !e.target.classList.contains('word-checkbox')) {
+    //
+    //     const word = $(this).find('.word').text()
+    //     const translation = $(this).find('.word-translation').text()
+    //     const synonyms = $(this).find('.word-synonyms').text()
+    //     let card_content = `<h3>${word}</h3>
+    //                             <h5>${translation}</h5>`
+    //     if (synonyms !== '-') {
+    //         card_content += `Синонимы слова: <em>${synonyms}</em>`
+    //     }
+    //
+    //     $('#word-model-body').html(card_content)
+    //     jQuery.noConflict()
+    //     jQuery('#modal-long').modal('show')
+    // } else {
+    //     console.log("HERE")
+    // }
 })

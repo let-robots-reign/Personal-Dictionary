@@ -3,11 +3,18 @@
 
   <div class="row d-flex justify-content-center">
     <div class="col text-center">
-      <p class="h1">Words</p>
+      <p class="h1">Your dictionary</p>
+
+      <%= link_to new_word_path, id: 'add-word', class: 'btn btn-success' do %>
+        Добавить
+        <i class="fas fa-plus-circle icon-2x"></i>
+      <% end %>
+
       <p class="text-md-left" id="chosen-words-number">
         <span></span>
         <a class="btn btn-light">Удалить все <i class="far fa-trash-alt icon-2x ml-1"></i></a>
       </p>
+
       <table class="table table-hover text-center">
         <thead>
         <tr>
@@ -27,22 +34,22 @@
 
         <tbody>
         <% @words.each_with_index do |word, index| %>
-          <tr>
+          <tr class='words' data-toggle="modal" data-target="#modal-long">
             <td>
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-<%= word.id %>">
                 <label class="custom-control-label" for="checkbox-<%= word.id %>"></label>
               </div>
             </td>
-            <td><%= index + 1 %></td>
-            <td><%= word.word %></td>
-            <td><%= word.translation %></td>
-            <td><%= word.synonyms %></td>
+            <td class="word-index"><%= index + 1 %></td>
+            <td class="word"><%= word.word %></td>
+            <td class="word-translation"><%= word.translation %></td>
+            <td class="word-synonyms"><%= word.synonyms %></td>
             <td>
-              <%= link_to word, class: 'show-word' do %>
-                <i class="fas fa-eye icon-2x mr-1"></i>
-              <% end %>
-              <span> | </span>
+              <%#= link_to word, class: 'show-word' do %>
+              <!--                <i class="fas fa-eye icon-2x mr-1"></i>-->
+              <%# end %>
+              <!--              <span> | </span>-->
               <%= link_to edit_word_path(word), class: 'edit-word' do %>
                 <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
               <% end %>
@@ -56,8 +63,25 @@
         <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
 
-      <%= link_to 'New Word', new_word_path %>
+<!-- Modal -->
+<div class="modal fade" id="modal-long" tabindex="-1" role="dialog" aria-labelledby="modal-long-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-long-title">Страница слова</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center" id="word-model-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Edit</button>
+      </div>
     </div>
   </div>
 </div>
