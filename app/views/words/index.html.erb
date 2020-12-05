@@ -5,7 +5,7 @@
     <div class="col text-center">
       <p class="h1">Words</p>
       <p class="text-md-left" id="chosen-words-number">
-        Выбрано слов: <%= @words.count %>
+        <span></span>
         <a class="btn btn-light">Удалить все <i class="far fa-trash-alt icon-2x ml-1"></i></a>
       </p>
       <table class="table table-hover text-center">
@@ -47,7 +47,8 @@
                 <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
               <% end %>
               <span> | </span>
-              <%= link_to word, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-word' do %>
+              <%= link_to word, method: :delete, data: { confirm: 'Are you sure?' }, remote: true,
+                          class: 'delete-word' do %>
                 <i class="far fa-trash-alt icon-2x ml-1"></i>
               <% end %>
             </td>
