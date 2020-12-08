@@ -43,6 +43,7 @@ $(document).ready(function () {
     })
 
     $('.words').click(function () {
+        // TODO: access model fields
         const word = $(this).find('.word').text()
         const translation = $(this).find('.word-translation').text()
         const synonyms = $(this).find('.word-synonyms').text()

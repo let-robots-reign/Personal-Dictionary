@@ -1,8 +1,13 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <div class="row d-flex justify-content-center">
-    <div class="col text-center">
+  <div class="row">
+
+    <div class="col-2">
+
+    </div>
+
+    <div class="col-10 text-center custom-card">
       <p class="h1">Your dictionary</p>
 
       <%= link_to new_word_path, id: 'add-word', class: 'btn btn-success' do %>
@@ -27,7 +32,6 @@
           <th>№</th>
           <th>Word</th>
           <th>Translation</th>
-          <th>Synonyms</th>
           <th></th>
         </tr>
         </thead>
@@ -44,7 +48,6 @@
             <td class="word-index"><%= index + 1 %></td>
             <td class="word"><%= word.word %></td>
             <td class="word-translation"><%= word.translation %></td>
-            <td class="word-synonyms"><%= word.synonyms %></td>
             <td>
               <i class="fas fa-eye icon-2x mr-1 show-word" data-toggle="modal" data-target="#modal-long"></i>
               <span> | </span>
