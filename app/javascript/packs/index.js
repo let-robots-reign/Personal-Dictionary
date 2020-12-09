@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    sidebarLogic();
+
     const delete_all_caption = 'Выбрано слов: '
     let checked_words = 0
 
@@ -43,6 +46,7 @@ $(document).ready(function () {
     })
 
     $('.words').click(function () {
+        // TODO: access model fields
         const word = $(this).find('.word').text()
         const translation = $(this).find('.word-translation').text()
         const synonyms = $(this).find('.word-synonyms').text()
@@ -55,3 +59,20 @@ $(document).ready(function () {
         $('#word-model-body').html(card_content)
     })
 })
+
+function sidebarLogic() {
+    let nav = $(".nav");
+    $(".nav__expand").click(function() {
+        nav.toggleClass("nav-closed")
+    })
+    let nav_list_item = $(".nav__listitem")
+    nav_list_item.each(function() {
+        $(this).click(function() {
+            nav_list_item.each(function() {
+                $(this).removeClass("nav__listitem-active")
+            })
+            $(this).addClass("nav__listitem-active")
+        })
+    })
+
+}

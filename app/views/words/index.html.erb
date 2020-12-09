@@ -1,67 +1,104 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<div class="container-fluid p-0 m-0">
 
-  <div class="row d-flex justify-content-center">
-    <div class="col text-center">
-      <p class="h1">Your dictionary</p>
+  <div class="row d-flex justify-content-between">
 
-      <%= link_to new_word_path, id: 'add-word', class: 'btn btn-success' do %>
-        Добавить
-        <i class="fas fa-plus-circle icon-2x"></i>
-      <% end %>
+    <div class="col-2">
+      <nav class="nav nav-closed">
+        <svg class="nav__expand" viewBox="0 0 256 512" width="100">
+          <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/>
+        </svg>
 
-      <p class="text-md-left" id="chosen-words-number">
-        <span></span>
-        <a class="btn btn-light">Удалить все <i class="far fa-trash-alt icon-2x ml-1"></i></a>
-      </p>
-
-      <table class="table table-hover text-center">
-        <thead>
-        <tr>
-          <th>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="global-checkbox">
-              <label class="custom-control-label" for="global-checkbox"></label>
-            </div>
-          </th>
-          <th>№</th>
-          <th>Word</th>
-          <th>Translation</th>
-          <th>Synonyms</th>
-          <th></th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <% @words.each_with_index do |word, index| %>
-          <tr class='words'>
-            <td>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-<%= word.id %>">
-                <label class="custom-control-label" for="checkbox-<%= word.id %>"></label>
-              </div>
-            </td>
-            <td class="word-index"><%= index + 1 %></td>
-            <td class="word"><%= word.word %></td>
-            <td class="word-translation"><%= word.translation %></td>
-            <td class="word-synonyms"><%= word.synonyms %></td>
-            <td>
-              <i class="fas fa-eye icon-2x mr-1 show-word" data-toggle="modal" data-target="#modal-long"></i>
-              <span> | </span>
-              <%= link_to edit_word_path(word), class: 'edit-word' do %>
-                <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
-              <% end %>
-              <span> | </span>
-              <%= link_to word, method: :delete, data: { confirm: 'Are you sure?' }, remote: true,
-                          class: 'delete-word' do %>
-                <i class="far fa-trash-alt icon-2x ml-1"></i>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+<!--    TODO: link_to instead of a -->
+        <ul class="nav__list">
+          <li class="nav__listitem">
+            <a href="#" style="display: inline-block">
+              <%= image_tag 'profile.svg' %>
+              <p>Log In</p>
+            </a>
+          </li>
+          <li class="nav__listitem nav__listitem-active">
+            <a href="#" style="display: inline-block">
+              <%= image_tag 'english.svg' %>
+              <p>English</p>
+            </a>
+          </li>
+          <li class="nav__listitem">
+            <a href="#" style="display: inline-block">
+              <%= image_tag 'spanish.svg' %>
+              <p>Spanish</p>
+            </a>
+          </li>
+          <li class="nav__listitem">
+            <a href="#" style="display: inline-block">
+              <%= image_tag 'french.svg' %>
+              <p>French</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
+
+    <div class="col-10 text-center">
+      <div class="custom-card">
+        <p class="h1">Your dictionary</p>
+
+        <%= link_to new_word_path, id: 'add-word', class: 'btn btn-success' do %>
+          Добавить
+          <i class="fas fa-plus-circle icon-2x"></i>
+        <% end %>
+
+        <p class="text-md-left" id="chosen-words-number">
+          <span></span>
+          <a class="btn btn-light">Удалить все <i class="far fa-trash-alt icon-2x ml-1"></i></a>
+        </p>
+
+        <table class="table table-hover text-center">
+          <thead>
+          <tr>
+            <th>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="global-checkbox">
+                <label class="custom-control-label" for="global-checkbox"></label>
+              </div>
+            </th>
+            <th>№</th>
+            <th>Word</th>
+            <th>Translation</th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @words.each_with_index do |word, index| %>
+            <tr class='words'>
+              <td>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-<%= word.id %>">
+                  <label class="custom-control-label" for="checkbox-<%= word.id %>"></label>
+                </div>
+              </td>
+              <td class="word-index"><%= index + 1 %></td>
+              <td class="word"><%= word.word %></td>
+              <td class="word-translation"><%= word.translation %></td>
+              <td>
+                <i class="fas fa-eye icon-2x mr-1 show-word" data-toggle="modal" data-target="#modal-long"></i>
+                <span> | </span>
+                <%= link_to edit_word_path(word), class: 'edit-word' do %>
+                  <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
+                <% end %>
+                <span> | </span>
+                <%= link_to word, method: :delete, data: { confirm: 'Are you sure?' }, remote: true,
+                            class: 'delete-word' do %>
+                  <i class="far fa-trash-alt icon-2x ml-1"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 </div>
 
