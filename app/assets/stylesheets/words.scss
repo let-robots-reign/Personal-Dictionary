@@ -48,7 +48,7 @@ body {
     border-left: 6px solid transparent;
     cursor: pointer;
 
-    &:first-child {
+    &:nth-child(2) {
       margin-bottom: 2rem;
     }
 
@@ -58,8 +58,7 @@ body {
 
     a {
       padding: 1rem 1.5rem;
-      display: flex;
-      gap: 1rem;
+      display: inline-block;
       align-items: center;
       color: #767B91;
       text-decoration: none;

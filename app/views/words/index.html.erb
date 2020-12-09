@@ -8,28 +8,50 @@
           <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/>
         </svg>
 
-<!--    TODO: link_to instead of a -->
+        <!--    TODO: link_to instead of a -->
         <ul class="nav__list">
-          <li class="nav__listitem">
-            <a href="#" style="display: inline-block">
-              <%= image_tag 'profile.svg' %>
-              <p>Log In</p>
-            </a>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav__listitem">
+              <%= link_to edit_user_registration_path, :class => 'navbar-link' do %>
+                <%= image_tag 'profile.svg' %>
+                <p><strong><%= current_user.email %></strong></p>
+              <% end %>
+            </li>
+            <li class="nav__listitem">
+              <%= link_to destroy_user_session_path, method: :delete, :class => 'navbar-link' do %>
+                <%= image_tag 'logout.svg' %>
+                <p>Logout</p>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav__listitem">
+              <%= link_to new_user_registration_path, :class => 'navbar-link' do %>
+                <%= image_tag 'signup.svg' %>
+                <p>Sign up</p>
+              <% end %>
+            </li>
+            <li class="nav__listitem">
+              <%= link_to new_user_session_path, :class => 'navbar-link' do %>
+                <%= image_tag 'login.svg' %>
+                <p>Login</p>
+              <% end %>
+            </li>
+          <% end %>
+
           <li class="nav__listitem nav__listitem-active">
-            <a href="#" style="display: inline-block">
+            <a href="#">
               <%= image_tag 'english.svg' %>
               <p>English</p>
             </a>
           </li>
           <li class="nav__listitem">
-            <a href="#" style="display: inline-block">
+            <a href="#">
               <%= image_tag 'spanish.svg' %>
               <p>Spanish</p>
             </a>
           </li>
           <li class="nav__listitem">
-            <a href="#" style="display: inline-block">
+            <a href="#">
               <%= image_tag 'french.svg' %>
               <p>French</p>
             </a>
