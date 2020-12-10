@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_093157) do
     t.string "example"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "\"language_id\"", name: "index_words_on_language_id"
   end
 
 end

@@ -46,6 +46,7 @@ $(document).ready(function () {
         $(this).closest('tr').fadeOut();
     })
 
+    // TODO: add edit link
     $('.words').click(function () {
         // TODO: access model fields
         const word = $(this).find('.word').text()
@@ -75,5 +76,4 @@ function sidebarLogic() {
             $(this).addClass("nav__listitem-active")
         })
     })
-
 }

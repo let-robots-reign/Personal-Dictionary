@@ -1,6 +1,11 @@
 class WordsController < ApplicationController
+  ENGLISH_LANG_CODE = 1
+  SPANISH_LANG_CODE = 2
+  FRENCH_LANG_CODE = 3
+
   before_action :set_word, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new show create update destroy edit]
+  before_action :set_language, only: %i[create index]
   # GET /words
   # GET /words.json
   def index
@@ -68,6 +73,10 @@ class WordsController < ApplicationController
 
   def set_word
     @word = Word.find(params[:id])
+  end
+
+  def set_language
+    @current_language = session.fetch(:current_language, ENGLISH_LANG_CODE)
   end
 
   def word_params
