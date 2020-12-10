@@ -8,7 +8,8 @@ $(document).ready(function () {
     let word_checkbox = $('.word-checkbox')
     let chosen_words_p = $('#chosen-words-number')
     let chosen_words_text = $('#chosen-words-number span')
-    
+
+    // TODO: delete all
     $('#global-checkbox').on('click', function () {
         if ($(this).is(':checked')) {
             checked_words = 0
