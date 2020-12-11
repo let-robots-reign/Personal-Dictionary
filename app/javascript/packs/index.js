@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    const ENGLISH_LANG_ID = 1
+    const SPANISH_LANG_ID = 2
+    const FRENCH_LANG_ID = 3
+
     sidebarLogic();
 
     const delete_all_caption = 'Выбрано слов: '
@@ -47,7 +51,7 @@ $(document).ready(function () {
     })
 
     // TODO: add edit link
-    $('.words').click(function () {
+    $('.word-row').click(function () {
         // TODO: access model fields
         const word = $(this).find('.word').text()
         const translation = $(this).find('.word-translation').text()
@@ -60,17 +64,53 @@ $(document).ready(function () {
 
         $('#word-model-body').html(card_content)
     })
+
+    $("#english").click(function (e) {
+        e.preventDefault()
+        $.ajax({
+            url: '/update_language',
+            type: 'GET',
+            cache: false,
+            data: {current_language: ENGLISH_LANG_ID}
+        }).done(function () {
+            console.log("DONE!")
+        })
+    })
+
+    $("#spanish").click(function (e) {
+        e.preventDefault()
+        $.ajax({
+            url: '/update_language',
+            type: 'GET',
+            cache: false,
+            data: {current_language: SPANISH_LANG_ID}
+        }).done(function () {
+            console.log("DONE!")
+        })
+    })
+
+    $("#french").click(function (e) {
+        e.preventDefault()
+        $.ajax({
+            url: '/update_language',
+            type: 'GET',
+            cache: false,
+            data: {current_language: FRENCH_LANG_ID}
+        }).done(function () {
+            console.log("DONE!")
+        })
+    })
 })
 
 function sidebarLogic() {
     let nav = $(".nav");
-    $(".nav__expand").click(function() {
+    $(".nav__expand").click(function () {
         nav.toggleClass("nav-closed")
     })
     let nav_list_item = $(".nav__listitem")
-    nav_list_item.each(function() {
-        $(this).click(function() {
-            nav_list_item.each(function() {
+    nav_list_item.each(function () {
+        $(this).click(function () {
+            nav_list_item.each(function () {
                 $(this).removeClass("nav__listitem-active")
             })
             $(this).addClass("nav__listitem-active")

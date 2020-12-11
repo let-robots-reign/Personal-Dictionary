@@ -69,6 +69,13 @@ class WordsController < ApplicationController
     end
   end
 
+  def update_language
+    session[:current_language] = params[:current_language]
+    respond_to do |format|
+      format.json { render json: { status: 'success' } }
+    end
+  end
+
   private
 
   def set_word

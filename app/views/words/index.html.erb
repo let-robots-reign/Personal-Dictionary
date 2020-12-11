@@ -39,19 +39,19 @@
           <% end %>
 
           <li class="nav__listitem nav__listitem-active">
-            <a href="#">
+            <a href="#" id='english'>
               <%= image_tag 'english.svg' %>
               <p>English</p>
             </a>
           </li>
           <li class="nav__listitem">
-            <a href="#">
+            <a href="#" id='spanish'>
               <%= image_tag 'spanish.svg' %>
               <p>Spanish</p>
             </a>
           </li>
           <li class="nav__listitem">
-            <a href="#">
+            <a href="#" id='french'>
               <%= image_tag 'french.svg' %>
               <p>French</p>
             </a>
@@ -92,7 +92,7 @@
 
           <tbody>
           <% @words.each_with_index do |word, index| %>
-            <tr class='words'>
+            <tr class='word-row'>
               <td>
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-<%= word.id %>">
