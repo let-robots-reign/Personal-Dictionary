@@ -9,6 +9,7 @@ class WordsController < ApplicationController
   # GET /words
   # GET /words.json
   def index
+    p "INDEX " + @current_language
     @words = Word.where(language_id: @current_language).order('created_at DESC')
   end
 
@@ -70,10 +71,11 @@ class WordsController < ApplicationController
   end
 
   def update_language
-    session[:current_language] = params[:current_language]
+    cookies.signed[:current_language] = params[:current_language]
     respond_to do |format|
       format.json { render json: { status: 'success' } }
     end
+    p "UPDATE: " + cookies.signed[:current_language]
   end
 
   private
@@ -83,7 +85,8 @@ class WordsController < ApplicationController
   end
 
   def set_language
-    @current_language = session.fetch(:current_language, ENGLISH_LANG_CODE)
+    @current_language = cookies.signed[:current_language] || ENGLISH_LANG_CODE
+    p "SET: " + @current_language
   end
 
   def word_params
