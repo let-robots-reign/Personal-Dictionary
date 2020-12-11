@@ -4,12 +4,12 @@ class WordsController < ApplicationController
   FRENCH_LANG_CODE = 3
 
   before_action :set_word, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: %i[new show create update destroy edit]
+  #before_action :authenticate_user!, only: %i[new show create update destroy edit]
   before_action :set_language, only: %i[create index]
   # GET /words
   # GET /words.json
   def index
-    @words = Word.all
+    @words = Word.where(language_id: @current_language).order('created_at DESC')
   end
 
   # GET /words/1
@@ -30,12 +30,12 @@ class WordsController < ApplicationController
   # POST /words.json
   def create
     params = fill_optional_fields(word_params)
-    @word = Word.new(params)
+    @word = Word.new(params.merge({ language_id: @current_language }))
 
     respond_to do |format|
       if @word.save
         format.html { redirect_to action: 'index', notice: 'Word was successfully created.' }
-        format.json { render :show, status: :created, location: @word }
+        format.json { render :index, status: :created, location: @word }
       else
         format.html { render :new }
         format.json { render json: @word.errors, status: :unprocessable_entity }
