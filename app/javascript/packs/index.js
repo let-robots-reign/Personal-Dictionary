@@ -72,9 +72,7 @@ $(document).ready(function () {
             type: 'GET',
             cache: false,
             data: {current_language: ENGLISH_LANG_ID}
-        }).done(function () {
-            console.log("DONE!")
-        })
+        }).done(refreshTable())
     })
 
     $("#spanish").click(function (e) {
@@ -84,9 +82,7 @@ $(document).ready(function () {
             type: 'GET',
             cache: false,
             data: {current_language: SPANISH_LANG_ID}
-        }).done(function () {
-            console.log("DONE!")
-        })
+        }).done(refreshTable())
     })
 
     $("#french").click(function (e) {
@@ -96,9 +92,7 @@ $(document).ready(function () {
             type: 'GET',
             cache: false,
             data: {current_language: FRENCH_LANG_ID}
-        }).done(function () {
-            console.log("DONE!")
-        })
+        }).done(refreshTable())
     })
 })
 
@@ -116,4 +110,17 @@ function sidebarLogic() {
             $(this).addClass("nav__listitem-active")
         })
     })
+}
+
+function refreshTable() {
+    $.ajax({
+        url: '/words.json',
+        type: 'GET'
+    }).done(function (data) {
+        let words_html = ""
+        for (let row in data) {
+
+        }
+    })
+    //console.log("DONE")
 }

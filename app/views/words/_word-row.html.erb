@@ -1,0 +1,23 @@
+<tr class='word-row'>
+  <td>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-<%= id %>">
+      <label class="custom-control-label" for="checkbox-<%= id %>"></label>
+    </div>
+  </td>
+  <td class="word-index"><%= index + 1 %></td>
+  <td class="word"><%= word %></td>
+  <td class="word-translation"><%= translation %></td>
+  <td>
+    <i class="fas fa-eye icon-2x mr-1 show-word" data-toggle="modal" data-target="#modal-long"></i>
+    <span> | </span>
+    <%= link_to edit_path, class: 'edit-word' do %>
+      <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
+    <% end %>
+    <span> | </span>
+    <%= link_to word_link, method: :delete, data: { confirm: 'Are you sure?' }, remote: true,
+                class: 'delete-word' do %>
+      <i class="far fa-trash-alt icon-2x ml-1"></i>
+    <% end %>
+  </td>
+</tr>
