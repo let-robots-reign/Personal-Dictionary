@@ -4,19 +4,18 @@ class WordsController < ApplicationController
   FRENCH_LANG_CODE = 3
 
   before_action :set_word, only: %i[show edit update destroy]
-  #before_action :authenticate_user!, only: %i[new show create update destroy edit]
+  before_action :authenticate_user!, only: %i[new show create update destroy edit]
   before_action :set_language, only: %i[create index]
   # GET /words
   # GET /words.json
   def index
-    p "INDEX " + @current_language
+    p "INDEX #{@current_language}"
     @words = Word.where(language_id: @current_language).order('created_at DESC')
   end
 
   # GET /words/1
   # GET /words/1.json
-  def show
-  end
+  def show; end
 
   # GET /words/new
   def new
@@ -24,8 +23,7 @@ class WordsController < ApplicationController
   end
 
   # GET /words/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /words
   # POST /words.json
@@ -71,11 +69,11 @@ class WordsController < ApplicationController
   end
 
   def update_language
-    cookies.signed[:current_language] = params[:current_language]
+    cookies[:current_language] = params[:current_language]
+    p "UPDATE: #{cookies[:current_language]}"
     respond_to do |format|
       format.json { render json: { status: 'success' } }
     end
-    p "UPDATE: " + cookies.signed[:current_language]
   end
 
   private
@@ -85,8 +83,8 @@ class WordsController < ApplicationController
   end
 
   def set_language
-    @current_language = cookies.signed[:current_language] || ENGLISH_LANG_CODE
-    p "SET: " + @current_language
+    p "SET: #{cookies[:current_language] || ENGLISH_LANG_CODE}"
+    @current_language = cookies[:current_language] || ENGLISH_LANG_CODE
   end
 
   def word_params
