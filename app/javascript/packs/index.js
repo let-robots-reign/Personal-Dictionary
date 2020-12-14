@@ -67,32 +67,35 @@ $(document).ready(function () {
 
     $("#english").click(function (e) {
         e.preventDefault()
-        $.ajax({
-            url: '/update_language',
-            type: 'GET',
-            cache: false,
-            data: {current_language: ENGLISH_LANG_ID}
-        }).done(refreshTable())
+        $.when(
+            $.get({
+                url: '/update_language',
+                cache: false,
+                data: {current_language: ENGLISH_LANG_ID}
+            })
+        ).then(refreshTable())
     })
 
     $("#spanish").click(function (e) {
         e.preventDefault()
-        $.ajax({
-            url: '/update_language',
-            type: 'GET',
-            cache: false,
-            data: {current_language: SPANISH_LANG_ID}
-        }).done(refreshTable())
+        $.when(
+            $.get({
+                url: '/update_language',
+                cache: false,
+                data: {current_language: SPANISH_LANG_ID}
+            })
+        ).then(refreshTable())
     })
 
     $("#french").click(function (e) {
         e.preventDefault()
-        $.ajax({
-            url: '/update_language',
-            type: 'GET',
-            cache: false,
-            data: {current_language: FRENCH_LANG_ID}
-        }).done(refreshTable())
+        $.when(
+            $.get({
+                url: '/update_language',
+                cache: false,
+                data: {current_language: FRENCH_LANG_ID}
+            })
+        ).then(refreshTable())
     })
 })
 
@@ -113,9 +116,8 @@ function sidebarLogic() {
 }
 
 function refreshTable() {
-    $.ajax({
+    $.get({
         url: '/words.json',
-        type: 'GET',
         cache: false
     }).done(function (data) {
         $("#words-table").empty()
@@ -154,5 +156,4 @@ function refreshTable() {
             )
         }
     })
-    //console.log("DONE")
 }
