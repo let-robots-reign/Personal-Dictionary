@@ -10,7 +10,11 @@ class WordsController < ApplicationController
   # GET /words.json
   def index
     p "INDEX #{@current_language}"
-    @words = Word.where(language_id: @current_language).order('created_at DESC')
+    if current_user
+      @words = Word.where(language_id: @current_language, user_id: current_user.id).order('created_at DESC')
+    else
+      @words = []
+    end
   end
 
   # GET /words/1
@@ -29,7 +33,7 @@ class WordsController < ApplicationController
   # POST /words.json
   def create
     params = fill_optional_fields(word_params)
-    @word = Word.new(params.merge({ language_id: @current_language }))
+    @word = Word.new(params.merge({ language_id: @current_language, user_id: current_user.id }))
 
     respond_to do |format|
       if @word.save

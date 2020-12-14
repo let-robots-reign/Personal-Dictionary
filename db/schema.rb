@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_222353) do
+ActiveRecord::Schema.define(version: 2020_12_14_214556) do
 
   create_table "languages", force: :cascade do |t|
     t.string "lang_name"
@@ -38,7 +38,9 @@ ActiveRecord::Schema.define(version: 2020_12_10_222353) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "language_id"
+    t.integer "user_id"
   end
 
   add_foreign_key "words", "languages"
+  add_foreign_key "words", "users"
 end
