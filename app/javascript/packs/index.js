@@ -67,35 +67,17 @@ $(document).ready(function () {
 
     $("#english").click(function (e) {
         e.preventDefault()
-        $.when(
-            $.get({
-                url: '/update_language',
-                cache: false,
-                data: {current_language: ENGLISH_LANG_ID}
-            })
-        ).then(refreshTable())
+        updateLang(ENGLISH_LANG_ID)
     })
 
     $("#spanish").click(function (e) {
         e.preventDefault()
-        $.when(
-            $.get({
-                url: '/update_language',
-                cache: false,
-                data: {current_language: SPANISH_LANG_ID}
-            })
-        ).then(refreshTable())
+        updateLang(SPANISH_LANG_ID)
     })
 
     $("#french").click(function (e) {
         e.preventDefault()
-        $.when(
-            $.get({
-                url: '/update_language',
-                cache: false,
-                data: {current_language: FRENCH_LANG_ID}
-            })
-        ).then(refreshTable())
+        updateLang(FRENCH_LANG_ID)
     })
 })
 
@@ -115,45 +97,58 @@ function sidebarLogic() {
     })
 }
 
-function refreshTable() {
-    $.get({
-        url: '/words.json',
-        cache: false
-    }).done(function (data) {
-        $("#words-table").empty()
-        for (let i = 1; i <= data.length; ++i) {
-            const row = data[i - 1]
-            const id = row["id"]
-            const word = row["word"]
-            const translation = row["translation"]
-            const show_path = row["url"].replace(/\.[^/.]+$/, "")
-            const edit_path = show_path + '/edit'
+function updateLang(langId) {
+    $.when(
+        $.get({
+            url: '/update_language',
+            cache: false,
+            data: {current_language: langId}
+        })
+    ).then(refreshTable())
+}
 
-            $("#words-table").append(
-                `<tr class='word-row'>
-                  <td>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-${id}">
-                      <label class="custom-control-label" for="checkbox-${id}"></label>
-                    </div>
-                  </td>
-                  <td class="word-index">${i}</td>
-                  <td class="word">${word}</td>
-                  <td class="word-translation">${translation}</td>
-                  <td>
-                    <i class="fas fa-eye icon-2x mr-1 show-word" data-toggle="modal" data-target="#modal-long"></i>
-                    <span> | </span>
-                    <a href=${edit_path} class="edit-word">
-                      <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
-                    </a>
-                    <span> | </span>
-                    
-                    <a data-confirm="Are you sure?" class="delete-word" data-remote="true" rel="nofollow" data-method="delete" href=${show_path}>
-                      <i class="far fa-trash-alt icon-2x ml-1"></i>
-                    </a>
-                  </td>
-                </tr>`
-            )
-        }
-    })
+function refreshTable() {
+    setTimeout(
+        function () {
+            $.get({
+                url: '/words.json',
+                cache: false
+            }).done(function (data) {
+                $("#words-table").empty()
+                for (let i = 1; i <= data.length; ++i) {
+                    const row = data[i - 1]
+                    const id = row["id"]
+                    const word = row["word"]
+                    const translation = row["translation"]
+                    const show_path = row["url"].replace(/\.[^/.]+$/, "")
+                    const edit_path = show_path + '/edit'
+
+                    $("#words-table").append(
+                        `<tr class='word-row'>
+                          <td>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-${id}">
+                              <label class="custom-control-label" for="checkbox-${id}"></label>
+                            </div>
+                          </td>
+                          <td class="word-index">${i}</td>
+                          <td class="word">${word}</td>
+                          <td class="word-translation">${translation}</td>
+                          <td>
+                            <i class="fas fa-eye icon-2x mr-1 show-word" data-toggle="modal" data-target="#modal-long"></i>
+                            <span> | </span>
+                            <a href=${edit_path} class="edit-word">
+                              <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
+                            </a>
+                            <span> | </span>
+                            
+                            <a data-confirm="Are you sure?" class="delete-word" data-remote="true" rel="nofollow" data-method="delete" href=${show_path}>
+                              <i class="far fa-trash-alt icon-2x ml-1"></i>
+                            </a>
+                          </td>
+                        </tr>`
+                    )
+                }
+            })
+        }, 50)
 }
