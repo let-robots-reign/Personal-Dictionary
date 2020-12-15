@@ -6,6 +6,7 @@ class WordsController < ApplicationController
   before_action :set_word, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: :index
   before_action :set_language, only: %i[create index]
+  skip_before_action :verify_authenticity_token
   # GET /words
   # GET /words.json
   def index
@@ -91,6 +92,13 @@ class WordsController < ApplicationController
           example: word.example
         }
       end
+    end
+  end
+
+  def delete_by_word
+    params[:words].each { |word| Word.find_by_word(word).destroy }
+    respond_to do |format|
+      format.json { render json: { status: 'success' } }
     end
   end
 

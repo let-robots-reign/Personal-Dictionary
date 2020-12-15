@@ -9,7 +9,6 @@ $(document).ready(function () {
     const delete_all_caption = 'Выбрано слов: '
     let checked_words = 0
 
-    // TODO: delete all
     $('#global-checkbox').on('click', function () {
         if ($(this).is(':checked')) {
             checked_words = 0
@@ -20,6 +19,26 @@ $(document).ready(function () {
             $('.word-checkbox').prop('checked', false).change()
             $('#chosen-words-number').css('visibility', 'hidden')
         }
+    })
+
+    $('body').on('click', '#delete-all', function (e) {
+        let words = []
+        $('.word-checkbox:checked').each(function () {
+            const referring_word = $(this).closest('tr').find('.word').text()
+            console.log(referring_word)
+            words.push(referring_word)
+        })
+
+        $.ajax({
+            url: '/delete_words',
+            type: 'DELETE',
+            cache: false,
+            data: {words: words}
+        })
+
+        refreshTable()
+        $('#global-checkbox').prop('checked', false).change()
+        $('#chosen-words-number').css('visibility', 'hidden')
     })
 
     $('body').on('change', '.word-checkbox', function (e) {
@@ -70,34 +89,34 @@ $(document).ready(function () {
         })
     })
 
-    $("#english").click(function (e) {
+    $('#english').click(function (e) {
         e.preventDefault()
         updateLang(ENGLISH_LANG_ID)
     })
 
-    $("#spanish").click(function (e) {
+    $('#spanish').click(function (e) {
         e.preventDefault()
         updateLang(SPANISH_LANG_ID)
     })
 
-    $("#french").click(function (e) {
+    $('#french').click(function (e) {
         e.preventDefault()
         updateLang(FRENCH_LANG_ID)
     })
 })
 
 function sidebarLogic() {
-    let nav = $(".nav");
-    $(".nav__expand").click(function () {
-        nav.toggleClass("nav-closed")
+    let nav = $('.nav');
+    $('.nav__expand').click(function () {
+        nav.toggleClass('nav-closed')
     })
-    let nav_list_item = $(".nav__listitem")
+    let nav_list_item = $('.nav__listitem')
     nav_list_item.each(function () {
         $(this).click(function () {
             nav_list_item.each(function () {
-                $(this).removeClass("nav__listitem-active")
+                $(this).removeClass('nav__listitem-active')
             })
-            $(this).addClass("nav__listitem-active")
+            $(this).addClass('nav__listitem-active')
         })
     })
 }
@@ -119,41 +138,41 @@ function refreshTable() {
                 url: '/words.json',
                 cache: false
             }).done(function (data) {
-                $("#words-table").empty()
+                $('#words-table').empty()
                 for (let i = 1; i <= data.length; ++i) {
                     const row = data[i - 1]
-                    const id = row["id"]
-                    const word = row["word"]
-                    const translation = row["translation"]
-                    const show_path = row["url"].replace(/\.[^/.]+$/, "")
+                    const id = row['id']
+                    const word = row['word']
+                    const translation = row['translation']
+                    const show_path = row['url'].replace(/\.[^/.]+$/, '')
                     const edit_path = show_path + '/edit'
 
-                    $("#words-table").append(
+                    $('#words-table').append(
                         `<tr class='word-row'>
                           <td>
-                            <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input word-checkbox" id="checkbox-${id}">
-                              <label class="custom-control-label" for="checkbox-${id}"></label>
+                            <div class='custom-control custom-checkbox'>
+                              <input type='checkbox' class='custom-control-input word-checkbox' id='checkbox-${id}'>
+                              <label class='custom-control-label' for='checkbox-${id}'></label>
                             </div>
                           </td>
-                          <td class="word-index">${i}</td>
-                          <td class="word">${word}</td>
-                          <td class="word-translation">${translation}</td>
+                          <td class='word-index'>${i}</td>
+                          <td class='word'>${word}</td>
+                          <td class='word-translation'>${translation}</td>
                           <td>
-                            <i class="fas fa-eye icon-2x mr-1 show-word" data-toggle="modal" data-target="#modal-long"></i>
+                            <i class='fas fa-eye icon-2x mr-1 show-word' data-toggle='modal' data-target='#modal-long'></i>
                             <span> | </span>
-                            <a href=${edit_path} class="edit-word">
-                              <i class="fas fa-pencil-alt icon-2x ml-1 mr-1"></i>
+                            <a href=${edit_path} class='edit-word'>
+                              <i class='fas fa-pencil-alt icon-2x ml-1 mr-1'></i>
                             </a>
                             <span> | </span>
                             
-                            <a data-confirm="Are you sure?" class="delete-word" data-remote="true" rel="nofollow" data-method="delete" href=${show_path}>
-                              <i class="far fa-trash-alt icon-2x ml-1"></i>
+                            <a data-confirm='Are you sure?' class='delete-word' data-remote='true' rel='nofollow' data-method='delete' href=${show_path}>
+                              <i class='far fa-trash-alt icon-2x ml-1'></i>
                             </a>
                           </td>
                         </tr>`
                     )
                 }
             })
-        }, 50)
+        }, 100)
 }
