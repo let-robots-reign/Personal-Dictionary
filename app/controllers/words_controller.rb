@@ -84,6 +84,7 @@ class WordsController < ApplicationController
     respond_to do |format|
       format.json do
         render json: {
+          id: word.id,
           word: word.word,
           translation: word.translation,
           synonyms: word.synonyms,

@@ -63,7 +63,10 @@ $(document).ready(function () {
             if (example !== '-') {
                 card_content += `Пример в предложении: <em>${example}</em>`
             }
-            $('#word-model-body').html(card_content)
+            $('#word-modal-body').html(card_content)
+
+            const edit_link = `/words/${word_data.id}/edit`
+            $('#edit-button').attr('href', edit_link)
         })
     })
 
