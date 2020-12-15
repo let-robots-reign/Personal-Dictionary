@@ -4,17 +4,16 @@ class WordsController < ApplicationController
   FRENCH_LANG_CODE = 3
 
   before_action :set_word, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: %i[new show create update destroy edit]
+  before_action :authenticate_user!, except: :index
   before_action :set_language, only: %i[create index]
   # GET /words
   # GET /words.json
   def index
-    p "INDEX #{@current_language}"
-    if current_user
-      @words = Word.where(language_id: @current_language, user_id: current_user.id).order('created_at DESC')
-    else
-      @words = []
-    end
+    @words = if current_user
+               Word.where(language_id: @current_language, user_id: current_user.id).order('created_at DESC')
+             else
+               []
+             end
   end
 
   # GET /words/1
@@ -74,9 +73,23 @@ class WordsController < ApplicationController
 
   def update_language
     cookies[:current_language] = params[:current_language]
-    p "UPDATE: #{cookies[:current_language]}"
     respond_to do |format|
       format.json { render json: { status: 'success' } }
+    end
+  end
+
+  def data_by_word
+    word = Word.find_by_word(params[:word])
+
+    respond_to do |format|
+      format.json do
+        render json: {
+          word: word.word,
+          translation: word.translation,
+          synonyms: word.synonyms,
+          example: word.example
+        }
+      end
     end
   end
 
@@ -87,7 +100,6 @@ class WordsController < ApplicationController
   end
 
   def set_language
-    p "SET: #{cookies[:current_language] || ENGLISH_LANG_CODE}"
     @current_language = cookies[:current_language] || ENGLISH_LANG_CODE
   end
 

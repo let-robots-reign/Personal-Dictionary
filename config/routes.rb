@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'words#index'
 
   get 'update_language', to: 'words#update_language'
+  get 'word_data', to: 'words#data_by_word'
 
   resources :words
 end
