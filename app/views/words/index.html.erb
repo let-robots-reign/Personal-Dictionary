@@ -99,7 +99,15 @@
         </table>
       </div>
     </div>
+  </div>
 
+  <div id='locale-langs'>
+    <%= link_to '/set_locale?locale=ru' do %>
+      <%= image_tag 'russian_rounded.svg', class: 'locale-lang' %>
+    <% end %>
+    <%= link_to '/set_locale?locale=en' do %>
+      <%= image_tag 'english_rounded.svg', class: 'locale-lang' %>
+    <% end %>
   </div>
 </div>
 

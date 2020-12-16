@@ -102,6 +102,14 @@ class WordsController < ApplicationController
     end
   end
 
+  def set_locale
+    if params[:locale]
+      I18n.locale = params[:locale]
+      cookies[:locale] = I18n.locale
+    end
+    redirect_to '/'
+  end
+
   private
 
   def set_word
