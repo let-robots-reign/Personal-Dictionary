@@ -2,27 +2,27 @@
   <div class="row">
     <div class="col">
       <p>
-        <strong>Word:</strong>
+        <strong><%= t('word') %>:</strong>
         <%= @word.word %>
       </p>
 
       <p>
-        <strong>Translation:</strong>
+        <strong><%= t('translation') %>:</strong>
         <%= @word.translation %>
       </p>
 
       <p>
-        <strong>Synonyms:</strong>
+        <strong><%= t('synonyms') %>:</strong>
         <%= @word.synonyms %>
       </p>
 
       <p>
-        <strong>Example:</strong>
+        <strong><%= t('example') %>:</strong>
         <%= @word.example %>
       </p>
 
-      <%= link_to 'Edit', edit_word_path(@word) %> |
-      <%= link_to 'Back', words_path %>
+      <%= link_to t('edit'), edit_word_path(@word) %> |
+      <%= link_to t('back'), words_path %>
 
     </div>
   </div>

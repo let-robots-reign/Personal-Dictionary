@@ -1,0 +1,27 @@
+ru:
+  word: Cлово
+  translation: Перевод
+  synonyms: Синонимы
+  example: Пример в предложении
+  field_optional: Это необязательное поле
+  create: Создать
+  update: Обновить
+  edit: Редактировать
+  back: Назад
+  are_you_sure: Вы уверены?
+  new_word: Создать слово
+  editing_word: Редактировать слово
+  english: Английский
+  spanish: Испанский
+  french: Французский
+  login: Войти
+  signup: Зарегистрироваться
+  logout: Выйти
+  your_dictionary: Ваш словарь
+  add: Добавить
+  delete_all: Удалить все
+  word_page: Страница слова
+  close: Закрыть
+  activerecord:
+    models:
+      word: слово

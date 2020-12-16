@@ -8,7 +8,6 @@
           <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/>
         </svg>
 
-        <!--    TODO: link_to instead of a -->
         <ul class="nav__list">
           <% if user_signed_in? %>
             <li class="nav__listitem">
@@ -20,20 +19,20 @@
             <li class="nav__listitem">
               <%= link_to destroy_user_session_path, method: :delete, :class => 'navbar-link' do %>
                 <%= image_tag 'logout.svg' %>
-                <p>Logout</p>
+                <p><%= t('logout') %></p>
               <% end %>
             </li>
           <% else %>
             <li class="nav__listitem">
               <%= link_to new_user_registration_path, :class => 'navbar-link' do %>
                 <%= image_tag 'signup.svg' %>
-                <p>Sign up</p>
+                <p><%= t('signup') %></p>
               <% end %>
             </li>
             <li class="nav__listitem">
               <%= link_to new_user_session_path, :class => 'navbar-link' do %>
                 <%= image_tag 'login.svg' %>
-                <p>Login</p>
+                <p><%= t('login') %>></p>
               <% end %>
             </li>
           <% end %>
@@ -41,19 +40,19 @@
           <li class="nav__listitem nav__listitem-active">
             <a href="#" id='english'>
               <%= image_tag 'english.svg' %>
-              <p>English</p>
+              <p><%= t('english') %></p>
             </a>
           </li>
           <li class="nav__listitem">
             <a href="#" id='spanish'>
               <%= image_tag 'spanish.svg' %>
-              <p>Spanish</p>
+              <p><%= t('spanish') %>></p>
             </a>
           </li>
           <li class="nav__listitem">
             <a href="#" id='french'>
               <%= image_tag 'french.svg' %>
-              <p>French</p>
+              <p><%= t('french') %>></p>
             </a>
           </li>
         </ul>
@@ -62,16 +61,16 @@
 
     <div class="col-10 text-center">
       <div class="custom-card">
-        <p class="h1">Your dictionary</p>
+        <p class="h1"><%= t('your_dictionary') %></p>
 
         <%= link_to new_word_path, id: 'add-word', class: 'btn btn-success' do %>
-          Добавить
+          <%= t('add') %>
           <i class="fas fa-plus-circle icon-2x"></i>
         <% end %>
 
         <p class="text-md-left" id="chosen-words-number">
           <span></span>
-          <a class="btn btn-light" id="delete-all">Удалить все <i class="far fa-trash-alt icon-2x ml-1"></i></a>
+          <a class="btn btn-light" id="delete-all"><%= t('delete_all') %> <i class="far fa-trash-alt icon-2x ml-1"></i></a>
         </p>
 
         <table class="table table-hover text-center">
@@ -84,8 +83,8 @@
               </div>
             </th>
             <th>№</th>
-            <th>Word</th>
-            <th>Translation</th>
+            <th><%= t('word') %></th>
+            <th><%= t('translation') %></th>
             <th></th>
           </tr>
           </thead>
@@ -109,15 +108,15 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modal-long-title">Страница слова</h5>
+        <h5 class="modal-title" id="modal-long-title"><%= t('word_page') %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body text-center" id="word-modal-body"></div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a type="button" class="btn btn-primary" id="edit-button">Edit</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('close') %></button>
+        <a type="button" class="btn btn-primary" id="edit-button"><%= t('edit') %></a>
       </div>
     </div>
   </div>

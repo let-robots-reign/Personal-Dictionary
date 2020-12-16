@@ -12,25 +12,25 @@
   <% end %>
 
   <div class="field form-group">
-    <%= form.label :word %>
+    <%= form.label :word, t('word') %>
     <%= form.text_field :word, class: 'form-control' %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :translation %>
+    <%= form.label :translation, t('translation') %>
     <%= form.text_field :translation, class: 'form-control' %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :synonyms %>
+    <%= form.label :synonyms, t('synonyms') %>
     <%= form.text_field :synonyms, class: 'form-control' %>
-    <small class="form-text text-muted">This field is optional</small>
+    <small class="form-text text-muted"><%= t('field_optional') %></small>
   </div>
 
   <div class="field form-group">
-    <%= form.label :example %>
+    <%= form.label :example, t('example') %>
     <%= form.text_field :example, class: 'form-control' %>
-    <small class="form-text text-muted">This field is optional</small>
+    <small class="form-text text-muted"><%= t('field_optional') %></small>
   </div>
 
   <div class="actions">

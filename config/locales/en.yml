@@ -30,4 +30,29 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  word: Word
+  translation: Translation
+  synonyms: Synonyms
+  example: Example in a sentence
+  field_optional: This field is optional
+  create: Create
+  update: Update
+  edit: Edit
+  back: Back
+  are_you_sure: Are you sure?
+  new_word: Create word
+  editing_word: Edit word
+  english: English
+  spanish: Spanish
+  french: French
+  login: Login
+  signup: Sign Up
+  logout: Logout
+  your_dictionary: Your dictionary
+  add: Add
+  delete_all: Delete all
+  word_page: Word page
+  close: Close
+  activerecord:
+    models:
+      word: word
