@@ -7,7 +7,7 @@ one:
   example: My cat is nice
 
 two:
-  word: MyString
-  translation: MyString
-  synonyms: MyString
-  example: MyString
+  word: test
+  translation: тест
+  synonyms: case, experiment
+  example: RSpec tests
