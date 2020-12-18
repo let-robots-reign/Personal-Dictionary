@@ -1,12 +1,11 @@
 <div class="container custom-card">
   <div class="row">
     <div class="col">
-      <h1>Editing Word</h1>
+      <h1><%= t('editing_word') %></h1>
 
       <%= render 'form', word: @word %>
 
-      <%= link_to 'Show', @word %> |
-      <%= link_to 'Back', words_path %>
+      <%= link_to t('back'), words_path %>
     </div>
   </div>
 </div>

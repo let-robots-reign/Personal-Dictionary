@@ -1,7 +1,7 @@
 <div class="container custom-card">
   <div class="row">
     <div class="col">
-      <h2>Log in</h2>
+      <h2><%= t('.sign_in') %></h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'devise-form' }) do |f| %>
         <div class="field form-group">
@@ -23,7 +23,7 @@
         <% end %>
 
         <div class="actions">
-          <%= f.submit "Log in", class: 'btn btn-primary' %>
+          <%= f.submit t('.sign_in'), class: 'btn btn-primary' %>
         </div>
         <br/>
       <% end %>
