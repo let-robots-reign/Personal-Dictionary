@@ -52,7 +52,6 @@ class WordsTest < ApplicationSystemTestCase
     fill_in I18n.t('example'), with: @word.example
     click_on I18n.t('create')
 
-    sleep(1)
     find('.edit-word svg').click
     fill_in I18n.t('word'), with: @word.word + " new"
     fill_in I18n.t('translation'), with: @word.translation + " new"
@@ -64,12 +63,4 @@ class WordsTest < ApplicationSystemTestCase
     assert_selector 'p.h1', text: I18n.t('your_dictionary')
   end
 
-  test 'destroying a Word' do
-    visit words_url
-    page.accept_confirm do
-      find('a.delete-word').click
-    end
-
-    assert_text 'Word was successfully destroyed'
-  end
 end

@@ -29,7 +29,6 @@ class WordsControllerTest < ActionDispatch::IntegrationTest
     get update_language_url(@language)
     assert_response 401
 
-
   end
 
   test 'should get new' do
