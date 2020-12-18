@@ -5,7 +5,7 @@ class WordsController < ApplicationController
 
   before_action :set_word, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: :index
-  before_action :set_language, only: %i[create index]
+  before_action :set_language, only: %i[create index current_lang]
   skip_before_action :verify_authenticity_token
   # GET /words
   # GET /words.json
@@ -76,6 +76,16 @@ class WordsController < ApplicationController
     cookies[:current_language] = params[:current_language]
     respond_to do |format|
       format.json { render json: { status: 'success' } }
+    end
+  end
+
+  def current_lang
+    respond_to do |format|
+      format.json do
+        render json: {
+          lang: @current_language.to_i
+        }
+      end
     end
   end
 

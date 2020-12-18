@@ -110,6 +110,15 @@ function sidebarLogic() {
     $('.nav__expand').click(function () {
         nav.toggleClass('nav-closed')
     })
+
+    // current active item
+    $.get({
+        url: '/current_lang',
+        cache: false
+    }).done(function (data) {
+        $($(`.nav__list`).children()[data.lang + 1]).addClass('nav__listitem-active')
+    })
+
     let nav_list_item = $('.nav__listitem')
     nav_list_item.each(function () {
         $(this).click(function () {
