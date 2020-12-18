@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class WordsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    @language = languages(:en)
     @word = words(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
@@ -17,10 +22,11 @@ class WordsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create word" do
     assert_difference('Word.count') do
-      post words_url, params: { word: { example: @word.example, synonyms: @word.synonyms, translation: @word.translation, word: @word.word } }
+      post words_url, params: { word: { example: @word.example, synonyms: @word.synonyms,
+                                        translation: @word.translation, word: @word.word } }
     end
 
-    assert_redirected_to word_url(Word.last)
+    assert_includes @response.redirect_url, 'http://www.example.com/?notice='
   end
 
   test "should show word" do
@@ -35,7 +41,8 @@ class WordsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update word" do
     patch word_url(@word), params: { word: { example: @word.example, synonyms: @word.synonyms, translation: @word.translation, word: @word.word } }
-    assert_redirected_to word_url(@word)
+    assert_response :redirect
+    assert_includes @response.redirect_url, 'http://www.example.com/?notice='
   end
 
   test "should destroy word" do
